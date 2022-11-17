@@ -7,8 +7,11 @@ const Post=(props)=>{
        
         
         <div className={s.item}>
+             
         <img src="https://cspromogame.ru//storage/upload_images/avatars/2038.jpg" alt="" />
-         {props.message}
+        {props.messagePost}
+        
+         
 
         <div>
             <span>like</span>
