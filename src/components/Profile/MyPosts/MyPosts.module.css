@@ -1,5 +1,6 @@
-
-
-.item img {
-    width: 50px;
+.postsBlock{
+    padding: 10px;
+}
+.posts{
+    margin: 10px;
 }

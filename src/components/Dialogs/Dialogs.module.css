@@ -13,10 +13,10 @@
     /*color: gold;*/
 }
 
-.dialogsItems .dialog a.active {
-    color: gold;
-    padding: 10px;
-}
+/*.dialogsItems .dialog a.active {*/
+/*    color: gold;*/
+/*    padding: 10px;*/
+/*}*/
 
 .dialog a {
     text-decoration: none;
