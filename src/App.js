@@ -19,6 +19,8 @@ function App(props) {
 
                 <div className='app-wrapper-content'>
                     <Routes>
+                        //локальный state не относится к базе
+                        //указывется конечная точка props.posts
                         <Route path='/profile' element={<Profile posts = {props.posts} />}/>
                         <Route  path='dialogs/*' element={<Dialogs dialogs = {props.dialogs}
                                                                    messages = {props.messages} />}/>

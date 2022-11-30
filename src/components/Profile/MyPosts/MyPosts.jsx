@@ -6,7 +6,7 @@ import Post from './Post/Post';
 
 const MyPosts = (props) => {
 
-
+//указывается конечная точка props.posts
     let postsElements = props.posts
         .map(p => <Post messagePost={p.message} likesCount={p.likesCount}/> )
 

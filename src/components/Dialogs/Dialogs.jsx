@@ -17,6 +17,7 @@ import Messages from './Message/Messages';
 
 
 //Новые массивы, можно с ретурном
+     //указывается конечная точка props.dialogs
     let dialogsItems = props.dialogs.map(d => {return (<DialogItem name={d.name} id={d.id} />)})
 
 //можно без ретурно сокращенно
