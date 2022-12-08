@@ -1,3 +1,4 @@
+import {rerenderEntireTree} from "../render";
 
 let state = {
 
@@ -24,15 +25,31 @@ let state = {
     profilePage: {
 
         posts:  [{id: 0, message: 'It is my first!!', likesCount: '23' },
+            {id: 1, message: 'I like it', likesCount: '0' },
             {id: 2, message: 'I like it', likesCount: '0' },
             {id: 3, message: 'I like it', likesCount: '0' },
-            {id: 4, message: 'I like it', likesCount: '0' },
-            {id: 5, message: 'I like it', likesCount: '0' }
+            {id: 4, message: 'I like it', likesCount: '0' }
         ]
 
 
     }
 
 }
+//export не по дефолту
+export let addPost = (postMessage)=>{
+    debugger;
+
+    let newPost = {
+        id: 5,
+        message: postMessage,
+        likesCount: '0'
+    };
+
+    //push это метод массива которыйдобавляетэлемент в конец
+
+    state.profilePage.posts.push(newPost);
+    rerenderEntireTree(state);
+
+};
 
 export default state;
