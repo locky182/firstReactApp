@@ -2,6 +2,8 @@ import {rerenderEntireTree} from "../render";
 
 let state = {
 
+
+
     dialogsPage: {
 
         dialogs: [{id: 0, name: 'Alex'},
@@ -29,27 +31,39 @@ let state = {
             {id: 2, message: 'I like it', likesCount: '0' },
             {id: 3, message: 'I like it', likesCount: '0' },
             {id: 4, message: 'I like it', likesCount: '0' }
-        ]
+        ],
+
+        newPostText: 'It kamasutra.com'
 
 
     }
 
 }
 //export не по дефолту
-export let addPost = (postMessage)=>{
-    debugger;
+export let addPost = ()=>{
+
 
     let newPost = {
         id: 5,
-        message: postMessage,
-        likesCount: '0'
+        message: state.profilePage.newPostText,
+        likesCount: '0',
+
     };
 
     //push это метод массива которыйдобавляетэлемент в конец
 
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText='';
     rerenderEntireTree(state);
 
 };
+export let updateNewPostText = (newText)=>{
+
+
+    state.profilePage.newPostText=newText;
+    rerenderEntireTree(state);
+
+};
+
 
 export default state;
