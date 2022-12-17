@@ -1,4 +1,7 @@
-import {rerenderEntireTree} from "../render";
+let rerenderEntireTree = ()=>{
+    console.log('State changed');
+};
+
 
 let state = {
 
@@ -40,7 +43,7 @@ let state = {
 
 }
 //export не по дефолту
-export let addPost = ()=>{
+export const addPost = ()=>{
 
 
     let newPost = {
@@ -54,16 +57,21 @@ export let addPost = ()=>{
 
     state.profilePage.posts.push(newPost);
     state.profilePage.newPostText='';
-    rerenderEntireTree(state);
+    rerenderEntireTree();
 
 };
-export let updateNewPostText = (newText)=>{
+export const updateNewPostText = (newText)=>{
 
 
     state.profilePage.newPostText=newText;
-    rerenderEntireTree(state);
+    rerenderEntireTree();
 
 };
+
+export const subscribe = (observer)=>{
+    rerenderEntireTree = observer;
+
+}
 
 
 export default state;
