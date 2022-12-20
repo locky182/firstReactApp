@@ -23,9 +23,11 @@ function App(props) {
                         //локальный state не относится к базе
                         //указывется конечная точка props.posts
                         <Route path='/profile' element={<Profile posts = {props.posts}
-                                                                 addPost = {props.addPost}
+                                                                 // addPost = {props.addPost}
                                                                  newPostText={props.newPostText}
-                                                                 updateNewPostText={props.updateNewPostText}/>}/>
+                                                                 //updateNewPostText={props.updateNewPostText}
+                            dispatch={props.dispatch}
+                            />}/>
                         <Route  path='dialogs/*' element={<Dialogs dialogs = {props.dialogs}
                                                                    messages = {props.messages}
                                                                    />}/>

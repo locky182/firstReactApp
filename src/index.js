@@ -13,8 +13,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
                    dialogs={store.getState().dialogsPage.dialogs}
                    messages={store.getState().dialogsPage.messages}
                    newPostText={store.getState().profilePage.newPostText}
-                   addPost={store.addPost.bind(store)}
-                   updateNewPostText={store.updateNewPostText.bind(store)}
+
+                   //Новый метод, который заменяет все методы
+                   dispatch={store.dispatch.bind(store)}
+                   //updateNewPostText={store.updateNewPostText.bind(store)}
 
 
             />

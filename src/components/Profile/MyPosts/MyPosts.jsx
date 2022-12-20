@@ -19,8 +19,9 @@ const MyPosts = (props) => {
     let addPost = ()=>{
 
 
-        props.addPost();
-        // props.updateNewPostText('');//зануление текстового поля только в bll
+       // props.addPost();
+        props.dispatch({type: 'ADD-POST'});
+
 
 
 
@@ -31,7 +32,10 @@ const MyPosts = (props) => {
 
     let onPostChange=()=>{
         let text = newPostElement.current.value;
-        props.updateNewPostText(text);
+        //props.updateNewPostText(text);
+
+        let action = {type: 'UPDATE-NEW-POST-TEXT', newText: text};//text это стандартное значение newText это свойство action
+        props.dispatch(action);
     }
 
     return (

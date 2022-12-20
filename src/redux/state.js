@@ -1,18 +1,14 @@
-
-
 let store = {
-    callSubscriber(){
+    _callSubscriber() {
         console.log('State changed');
     },
 
-    getState(){
+    getState() {
 
         return this._state;
     },
 
     _state: {
-
-
 
 
         dialogsPage: {
@@ -24,7 +20,7 @@ let store = {
                 {id: 4, name: 'Masha'}
             ],
 
-            messages: [{id: 0, message:'Hi'},
+            messages: [{id: 0, message: 'Hi'},
                 {id: 1, message: 'How are you'},
                 {id: 2, message: 'How can i help you'},
                 {id: 3, message: 'I dont now'},
@@ -32,16 +28,15 @@ let store = {
             ]
 
 
-
         },
 
         profilePage: {
 
-            posts:  [{id: 0, message: 'It is my first!!', likesCount: '23' },
-                {id: 1, message: 'I like it', likesCount: '0' },
-                {id: 2, message: 'I like it', likesCount: '0' },
-                {id: 3, message: 'I like it', likesCount: '0' },
-                {id: 4, message: 'I like it', likesCount: '0' }
+            posts: [{id: 0, message: 'It is my first!!', likesCount: '23'},
+                {id: 1, message: 'I like it', likesCount: '0'},
+                {id: 2, message: 'I like it', likesCount: '0'},
+                {id: 3, message: 'I like it', likesCount: '0'},
+                {id: 4, message: 'I like it', likesCount: '0'}
             ],
 
             newPostText: 'Lexey zdarova'
@@ -50,37 +45,64 @@ let store = {
         }
 
     },
+    subscribe(observer) {
+        this._callSubscriber = observer;
 
-     addPost() {
+    },
+    //
+    // addPost() {
+    //
+    //
+    //     let newPost = {
+    //         id: 5,
+    //         message: this._state.profilePage.newPostText,
+    //         likesCount: '0',
+    //
+    //     };
+    //
+    //     //push это метод массива который добавляет элемент в конец
+    //
+    //     this._state.profilePage.posts.push(newPost);
+    //     this._state.profilePage.newPostText = '';
+    //     this._callSubscriber(this._state);
+    //
+    // },
 
+    // updateNewPostText(newText) {
+    //
+    //
+    //     this._state.profilePage.newPostText = newText;
+    //     this._callSubscriber(this._state);
+    //
+    // },
 
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: '0',
+    dispatch(action){ // type: 'ADD-POST' этотеперь одинединственный метод вместо addPost updateNewPostText
 
-        };
+        if(action.type === 'ADD-POST'){
+            let newPost = {
+                id: 5,
+                message: this._state.profilePage.newPostText,
+                likesCount: '0',
 
-        //push это метод массива который добавляет элемент в конец
+            };
 
-        this._state.profilePage.posts.push(newPost);
-         this._state.profilePage.newPostText='';
-        this.callSubscriber(this._state);
+            //push это метод массива который добавляет элемент в конец
+
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this._callSubscriber(this._state);
+
+        }else if(action.type === 'UPDATE-NEW-POST-TEXT'){
+
+            this._state.profilePage.newPostText = action.newText;
+            this._callSubscriber(this._state);
+
+        }
+
 
     },
 
-    updateNewPostText  (newText){
 
-
-        this._state.profilePage.newPostText=newText;
-        this.callSubscriber(this._state);
-
-    },
-
-    subscribe(observer){
-        this.callSubscriber = observer;
-
-    }
 }
 
 export default store;
