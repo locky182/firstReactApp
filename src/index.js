@@ -2,19 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import state, {addPost, subscribe, updateNewPostText} from "./redux/state";
+import store from "./redux/state";
 
 // нужно вынести из метода что бы текстэриа работал
 const root = ReactDOM.createRoot(document.getElementById('root'));
  let  rerenderEntireTree = ()=>{
     root.render(
         <React.StrictMode>
-            <App   posts={state.profilePage.posts}
-                   dialogs={state.dialogsPage.dialogs}
-                   messages={state.dialogsPage.messages}
-                   newPostText={state.profilePage.newPostText}
-                   addPost={addPost}
-                   updateNewPostText={updateNewPostText}
+            <App   posts={store.getState().profilePage.posts}
+                   dialogs={store.getState().dialogsPage.dialogs}
+                   messages={store.getState().dialogsPage.messages}
+                   newPostText={store.getState().profilePage.newPostText}
+                   addPost={store.addPost.bind(store)}
+                   updateNewPostText={store.updateNewPostText.bind(store)}
+
+
             />
         </React.StrictMode>
     );
@@ -23,8 +25,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
     reportWebVitals();
 
 };
- rerenderEntireTree(state);
 
- subscribe(rerenderEntireTree);
+
+ store.subscribe(rerenderEntireTree);
+rerenderEntireTree(store.getState());
 
 
